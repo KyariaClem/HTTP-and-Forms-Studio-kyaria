@@ -1,19 +1,54 @@
 <!doctype html>
 
 <head>
+	<style>
+		body {
+		background-color: green;
+	}
+
+	button {
+		color: blue
+	}
+
+	
+	</style>
 	<meta charset="utf-8">
 	<script>
 		// TODO: create a handler
+
+		function setSearchEngine () {
+			let selectedEngine = document.querySelector('input[name=engine]:checked')
+			let form = document.getElementById('searchForm')
+			let actions = {
+				"Google": "https://www.google.com/",
+   				"Bing": "https://www.bing.com/search"
+			};
+let url = actions[selectedEngine.value];
+form.setAttribute('action', url)
+		}
+		
     window.addEventListener("load", function(){
         // TODO: register the handler
+		let form = document.getElementById('searchForm')
+		form.addEventListener('submit', setSearchEngine)
+
+
     });
 	</script>
+
+
+
 </head>
 
 <body>
 
 	<form id="searchForm">
     <!-- TODO: add form elements -->
+	<input type="text" name="q">
+	<label for="">Google <input type="radio" name="engine" value="Google"/></label>
+	<label for="">Bing <input type="radio" name="engine" value="Bing"/></label>
+
+	<button type="">Go!</button>
 	</form>
 
 </body>
